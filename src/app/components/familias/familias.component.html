@@ -1,0 +1,18 @@
+<div class="container family-card-div">
+
+  <div class="card " style="width: 18rem;" *ngFor="let familia of familias">
+    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div class="card-body">
+      <h5 class="card-title">{{familia.nombre}}</h5>
+      <p class="card-text"></p>
+      <b>Miembros de la familia</b>
+      <div *ngFor="let persona of familia.personas">
+       
+          <i class="fas fa-user"></i>{{persona.nombre}}
+
+      </div>
+      <a href="#" class="btn btn-primary">Detalle</a>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,13 @@
+<div class="container person-card-div">
+
+  <div class="card " style="width: 18rem;" *ngFor="let persona of personas">
+    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <i class="fas fa-user fa-5x"></i>
+    <div class="card-body">
+      <h5 class="card-title">{{persona.nombre}}</h5>
+      <p class="card-text">{{persona.correo}}</p>
+      <a href="#" class="btn btn-primary">Detalle</a>
+    </div>
+  </div>
+
+</div>
