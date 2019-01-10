@@ -1,17 +1,55 @@
-<form novalidate >
+<div class="contaienr">
+  <p class="alert alert-success" *ngIf="hayMensaje">{{mensaje}}</p>
+</div>
+
+<form [formGroup]="formulario" (ngSubmit)="sumitar()" novalidate>
     <div class="form-row justify-content-md-center">
       <div class="form-group">
-        <label for="nombre"> Nombre:</label>
-        <input type="text"  class="form-control" name="nombre" placeholder="Nombre de usuario">
-      </div>
-
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="nombre" class="form-control" name="nombre" placeholder="Nombre de usuario" required>
+        <small *ngIf="formulario.controls.nombre.errors?.required" class="text-danger">El campos es requerido</small>
+        <small *ngIf="formulario.controls.nombre.errors?.minlength" class="text-danger">El nombre debe tener mas de 2
+          caracteres</small>
+        <small *ngIf="formulario.controls.nombre.errors?.maxlength" class="text-danger">El nombre debe tener menos de
+45 caracteres</small>
+      </div> 
+    </div> 
+    <div class="form-row justify-content-md-center">
       <div class="form-group">
-          <label for="direccion"> Familia:</label><i class="fas fa-plus" (click)="agregarFamilia()"></i><br>
-         <select>
-           <option>Familia1</option>
-         </select>
+        <label for="correo">Correo electronico</label>
+        <input type="email" formControlName="correo" class="form-control" name="correo" placeholder="nombre@dominio.es" required>
+        <small *ngIf="formulario.controls.correo.errors?.required" class="text-danger">El campos es requerido</small>
+        <small *ngIf="formulario.controls.correo.errors?.pattern?.requiredPattern" class="text-danger">el formato del correo es incorrecto</small>
+        <small *ngIf="formulario.controls.correo.errors?.maxlength" class="text-danger">El nombre debe tener menos de
+          200 caracteres</small>
+
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" formControlName="password" class="form-control" name="password" placeholder="palabra secreta" required>
+        <small *ngIf="formulario.controls.password.errors?.required" class="text-danger">El campos es requerido</small>
+        <small *ngIf="formulario.controls.password.errors?.minlength" class="text-danger">El nombre debe tener mas de 2
+          caracteres</small>
+        <small *ngIf="formulario.controls.password.errors?.maxlength" class="text-danger">El nombre debe tener menos de
+45 caracteres</small>
+        
+
+      </div>
+    
+    
+    </div>
+    <div class="form-row justify-content-md-center">
+      <div class="form-group">
+        <label for="familia"> Familia</label><i class="fas fa-plus" (click)="agregarFamilia()"></i><br>
+       <select id="familySelector" formControlName="familySelector">
+         <option *ngFor="let familia of familias" value="{{familia.selfId}}">{{familia.nombre}}</option>
+       </select>
+       <input id="nuevaFamilia" placeholder="Nueva familia" >
       </div>     
     </div>
+    <div class="form-row justify-content-md-center">
+      
+  </div>
 
     <div class="form-row justify-content-md-center">
         <div class="form-group">

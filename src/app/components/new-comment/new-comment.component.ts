@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Family } from 'src/app/model/family';
+import { FamilysService } from 'src/app/providers/familys.service';
 
 @Component({
   selector: 'app-new-comment',
@@ -6,13 +8,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-comment.component.scss']
 })
 export class NewCommentComponent implements OnInit {
-
-  constructor() {
+  familias: Family[];
+  constructor(private familiasService:FamilysService) {
+    
 
     console.log("NewCommentComponent -- constructor");
+
+    this.familias = [];
+    this.getFamilys();
    }
 
   ngOnInit() {
+  }
+
+  getFamilys(){
+    console.log("FamiliasComponent -- getAll");
+
+    this.familiasService.getAll().subscribe(f=>{
+
+      f.forEach(element => {
+
+        this.familias.push(element);
+
+      });
+      
+    });
+
   }
 
 }

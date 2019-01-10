@@ -17,6 +17,7 @@ import { FamiliasComponent } from './components/familias/familias.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { FamilysService } from './providers/familys.service';
 import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { LoginComponent } from './components/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     
