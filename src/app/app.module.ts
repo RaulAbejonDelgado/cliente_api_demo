@@ -18,6 +18,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { FamilysService } from './providers/familys.service';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComentariosGuard } from './guards/comentarios.guard';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     
     CommentsService,
     PersonsService,
-    FamilysService
+    FamilysService,
+    ComentariosGuard
 
   ],
   bootstrap: [AppComponent]

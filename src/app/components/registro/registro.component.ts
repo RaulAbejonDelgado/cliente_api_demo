@@ -102,7 +102,6 @@ export class RegistroComponent implements OnInit {
     console.log("FamiliasComponent -- sumitar");
     console.log("controls %o" ,this.formulario.controls);
     let persona = new Person();
-    console.log(document.getElementById("familySelector"));
     
     persona.nombre = this.formulario.controls.nombre.value;
     persona.correo = this.formulario.controls.correo.value;

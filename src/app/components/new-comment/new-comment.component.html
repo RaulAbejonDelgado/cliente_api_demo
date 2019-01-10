@@ -1,15 +1,22 @@
 <div class="container">
-<form novalidate >
+  <p *ngIf="hayMensaje" class="alert alert-success">Comentario creado correctamente</p>
+<form novalidate [formGroup]="formulario" (ngSubmit)="sumitar()" >
+    <div class="form-row justify-content-md-center">
+        <div class="form-group">
+          <label for="nombre"> Titulo:</label>
+          <input type="text" formControlName="titulo"  class="form-control" name="titulo" placeholder="titulo del comentario">
+      </div>
+    </div>
     <div class="form-row justify-content-md-center">
       <div class="form-group">
         <label for="nombre"> Nombre:</label>
-        <input type="text"  class="form-control" name="nombre" placeholder="Usuario">
+        <input type="text" formControlName="nombre"  class="form-control" name="nombre" placeholder="Usuario">
       </div>
 
       <div class="form-row justify-content-md-center">
         <div class="form-group">
           <label for="familia"> Familia</label><br>
-         <select id="familySelector" >
+         <select id="familySelector" formControlName="familia">
            <option *ngFor="let familia of familias" value="{{familia.selfId}}">{{familia.nombre}}</option>
          </select>
         </div>     
@@ -20,7 +27,7 @@
       <div class="form-group">
         <div class="form-group">
           <label for="texto">Comentario</label><br>
-          <textarea name="texto" placeholder="Deja tu comentario" minlength="5" maxlength="500" cols="50"></textarea>
+          <textarea name="texto" formControlName="texto" placeholder="Deja tu comentario" minlength="5" maxlength="500" cols="50"></textarea>
         </div>    
       </div>
 

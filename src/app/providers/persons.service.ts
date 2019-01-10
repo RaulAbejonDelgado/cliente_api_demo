@@ -21,17 +21,8 @@ export class PersonsService {
   }
 
   add(persona: Person): Observable<any>{
-    console.trace(`FrutaService add ${this.endpoint}`);
-    // let body  = {
-    //       //"id": tarea.id,
-    //       "nombre": fruta.nombre,
-    //       "precio": fruta.precio,
-    //       "calorias": fruta.calorias, 
-    //       "colores" : fruta.colores,
-    //       "oferta": fruta.oferta,
-    //       "descuento": fruta.descuento,
-    //       "imagen" : fruta.imagen
-    //     };  
+    
+    console.trace(`PersonsService add ${this.endpoint}`);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
@@ -39,4 +30,11 @@ export class PersonsService {
     };
     return this.http.post( this.endpoint, JSON.stringify(persona),httpOptions  );
 }
+
+getByName(nombre:string): Observable <any>{
+
+  return this.http.get(this.endpoint+"/nombre/"+nombre);
+
+}
+
 }
