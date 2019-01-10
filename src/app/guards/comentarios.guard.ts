@@ -17,7 +17,7 @@ export class ComentariosGuard implements CanActivate {
     console.trace("ComentariosGuard - canActivate ");
     if ( !this.loginService.isLogged() ){
 
-      console.log("Guard estado :"+ !this.loginService.isLogged());
+      console.log("Guard estado :"+ this.loginService.isLogged());
       this.router.navigate(['login']);
       return false;
 

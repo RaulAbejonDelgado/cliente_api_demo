@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Person } from 'src/app/model/person';
 import { LoginService } from 'src/app/providers/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,13 @@ import { LoginService } from 'src/app/providers/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  flag: boolean;
   formulario : FormGroup;
   
-  constructor(private personaService : PersonsService, private loginService : LoginService) {
+  constructor(private personaService : PersonsService, private loginService : LoginService,private router: Router) {
 
     console.log("LoginComponent -- constructor")
-
+    this.flag = false;
     this.formulario = new FormGroup({
       correo: new FormControl('',
                                   [
@@ -36,29 +37,48 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  tryLogin(){
-
-    console.log("FamiliasComponent -- sumitar");
-    console.log("controls %o" ,this.formulario.controls);
-    let persona = new Person();
-    console.log(document.getElementById("familySelector"));
+  // tryLogin(){
     
-    persona.correo = this.formulario.controls.correo.value;
-    persona.password = this.formulario.controls.password.value;
-    this.loginService.login(persona).subscribe(el=>{
-      this.loginService.isLogged();
-    })
-    // if(this.loginService.login(persona)){
+  //   console.log("FamiliasComponent -- sumitar");
+  //   console.log("controls %o" ,this.formulario.controls);
+  //   let persona = new Person();
+    
+  //   persona.correo = this.formulario.controls.correo.value;
+  //   persona.password = this.formulario.controls.password.value;
 
-    //   console.log("Usuario autentificado correctamente");
+  //   this.flag = this.loginService.login(persona);
+  //   if(this.flag){
+  //     this.router.navigate(['comentario-nuevo']);
+  //   }
+  // }
 
-    // }else{
-    //   console.log("Usuario no autentificado");
-    // }
+  sumitar(){
+    console.trace("LoginComponent - sumitar")
+    //todo llamar al servicio de login
 
-      // this.mensaje="Registro creado con exito";
-      // this.hayMensaje = true;
+    //recoger parametros del formulario
+
+    let nombre = this.formulario.controls.correo.value;
+    let password = this.formulario.controls.password.value;
+
+    console.log("nombre %o", nombre);
+    console.log("nombre %o", password);
+
+
+    let u = new Person();
+    u.nombre = nombre;
+    u.password = password;
+
+    //llamar al servicio
+    if(this.loginService.login(u)){
+      this.router.navigate(['comentario-nuevo']);
+    }else{
+      // this.mensaje = "Credenciales no validas, prueba de nuevo";
+      // this.logueo = false;
+    }
 
   }
 
-}
+  }
+
+

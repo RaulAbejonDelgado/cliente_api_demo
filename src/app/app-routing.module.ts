@@ -11,8 +11,8 @@ import { ComentariosGuard } from './guards/comentarios.guard';
 
 const routes: Routes = [
 
-  // { path: 'comentario-nuevo', component: NewCommentComponent, canActivate:[ComentariosGuard] },
-  { path: 'comentario-nuevo',component: NewCommentComponent},
+  { path: 'comentario-nuevo', component: NewCommentComponent, canActivate:[ComentariosGuard] },
+  //{ path: 'comentario-nuevo',component: NewCommentComponent},
   { path: 'login',component: LoginComponent},
   { path: 'registro',component: RegistroComponent},
   { path: 'personas',component: PersonasComponent},
