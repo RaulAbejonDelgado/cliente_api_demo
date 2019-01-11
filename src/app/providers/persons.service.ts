@@ -73,7 +73,11 @@ checkLogState():boolean{
 
 setLogState(logueado:boolean){
   
-  this.isLogued = true;
+  this.isLogued = logueado;
+}
+
+logOut() {
+  this.isLogued = false;
 }
 
 }

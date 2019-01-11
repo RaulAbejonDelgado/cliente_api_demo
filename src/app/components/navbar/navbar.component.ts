@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
+import { PersonsService } from './../../providers/persons.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() {
+  constructor(private personService: PersonsService, private router: Router) {
 
     console.log("NavbarComponent -- constructor")
   }
@@ -18,6 +21,9 @@ export class NavbarComponent implements OnInit {
   logOut() {
     console.log("Desconectando.....");
 
+   // this.personService.logOut();
+    this.personService.setLogState(false);
+    this.router.navigate(['login']);
 
   }
 

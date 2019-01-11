@@ -7,6 +7,7 @@
 
         <p id="profile-name" class="profile-name-card"></p>
         <form [formGroup]="formulario" class="form-signin" (ngSubmit)="login()">
+            <p *ngIf="hayMensaje" class="alert alert-danger">{{mensaje}}</p>
             <span id="reauth-email" class="reauth-email"></span>
             <input type="email" id="correo" formControlName="correo" class="form-control" name="correo" placeholder="Direccion de correo"
                 required autofocus>

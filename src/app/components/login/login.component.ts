@@ -12,11 +12,15 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   flag: boolean;
   formulario: FormGroup;
-
+  mensaje:string;
+  hayMensaje:boolean;
+  
   constructor(private personaService: PersonsService, private router: Router) {
 
     console.log("LoginComponent -- constructor")
     this.flag = false;
+    this.mensaje= "";
+    this.hayMensaje = false;
     this.formulario = new FormGroup({
       correo: new FormControl('',
         [
@@ -48,16 +52,21 @@ export class LoginComponent implements OnInit {
     persona.password = this.formulario.controls.password.value;
 
     this.personaService.checkLogin(persona).subscribe(res => {
-      console.log(res);
+     
       if (res != null) {
         this.personaService.setLogState(true);
         this.router.navigate(['comentario-nuevo']);
+      }else{
+        
       }
+       
+     
 
     });
-    if (this.flag) {
-
-    }
+    this.mensaje = "No se reconoce el usuario"+
+    "Vuelva a intentarlo o registrese por favor"  ; 
+    this.hayMensaje = true;
+    
   }
 
 }
