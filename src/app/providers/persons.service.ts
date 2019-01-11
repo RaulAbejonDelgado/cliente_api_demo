@@ -14,7 +14,9 @@ export class PersonsService {
     this.isLogued = false;
     this.endpoint ="http://localhost:8080/API/publicaciones/person";
   }
-
+  /**
+   * All records from object
+   */
   getAll() :  Observable <any>{
 
      console.log("PersonsService -- getAll");
@@ -22,6 +24,10 @@ export class PersonsService {
      return this.http.get(this.endpoint);
   }
 
+  /**
+   * 
+   * @param persona posted person
+   */
   add(persona: Person): Observable<any>{
     
     console.trace(`PersonsService add ${this.endpoint}`);
@@ -32,7 +38,10 @@ export class PersonsService {
     };
     return this.http.post( this.endpoint, JSON.stringify(persona),httpOptions  );
 }
-
+/**
+ * 
+ * @param nombre 
+ */
 getByName(nombre:string): Observable <any>{
 
   return this.http.get(this.endpoint+"/nombre/"+nombre);

@@ -18,22 +18,22 @@ export class FamiliasComponent implements OnInit {
     this.familias = [];
     this.getAll();
 
-   }
+  }
 
   ngOnInit() {
   }
 
-  getAll(){
+  getAll() {
     console.log("FamiliasComponent -- getAll");
 
-    this.familiaService.getAll().subscribe(f=>{
+    this.familiaService.getAll().subscribe(f => {
       console.log(f);
       f.forEach(element => {
         console.log(element);
         this.familias.push(element);
         console.log(element.personas);
       });
-      
+
     });
 
   }

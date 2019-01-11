@@ -9,28 +9,28 @@ import { Person } from 'src/app/model/person';
   styleUrls: ['./personas.component.scss']
 })
 export class PersonasComponent implements OnInit {
-  personas:Person[];
+  personas: Person[];
 
-  constructor(private personasService:PersonsService) {
+  constructor(private personasService: PersonsService) {
 
     console.log("PersonasComponent -- constructor");
     this.personas = [];
     //this.familia = [];
     this.getAll();
 
-   }
+  }
 
   ngOnInit() {
   }
 
-  getAll(){
+  getAll() {
 
     console.log("PersonasComponent -- getAll");
-    this.personasService.getAll().subscribe(data=>{
+    this.personasService.getAll().subscribe(data => {
       data.forEach(element => {
         console.log(element);
         this.personas.push(element);
-        
+
       });
     });
 

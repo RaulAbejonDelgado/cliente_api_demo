@@ -11,30 +11,30 @@ export class HomeComponent implements OnInit {
 
   comentarios: Comentario[];
 
-  constructor(private comentariosService: CommentsService) { 
+  constructor(private comentariosService: CommentsService) {
 
     console.log("HomeComponent -- constructor");
-    this.comentarios = [] ;
+    this.comentarios = [];
     this.getAll();
 
   }
 
   ngOnInit() {
     console.log("HomeComponent -- ngOnInit")
-    
+
   }
 
-  getAll(){
+  getAll() {
     console.log("HomeComponent -- getAll")
-    this.comentariosService.getAll().subscribe(data=>{
+    this.comentariosService.getAll().subscribe(data => {
       data.forEach(element => {
         console.log(element);
-        
+
         this.comentarios.push(element);
 
       });
     })
-    
+
   }
 
 }

@@ -42,7 +42,7 @@ import { ComentariosGuard } from './guards/comentarios.guard';
     ReactiveFormsModule
   ],
   providers: [
-    
+
     CommentsService,
     PersonsService,
     FamilysService,

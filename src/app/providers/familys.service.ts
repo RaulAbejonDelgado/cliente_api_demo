@@ -7,28 +7,27 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FamilysService {
-  endpoint:string;
+  endpoint: string;
 
-  constructor(public http : HttpClient) {
+  constructor(public http: HttpClient) {
 
     console.log("FamilysService -- constructor");
     this.endpoint = "http://localhost:8080/API/publicaciones/family";
 
-   }
+  }
 
-   getAll() :  Observable <any>{
+  getAll(): Observable<any> {
 
     console.log("FamilysService -- getAll")
     return this.http.get(this.endpoint);
 
   }
 
-  getById(id:number): Observable <any>{
+  getById(id: number): Observable<any> {
 
-    return this.http.get(this.endpoint+"/"+id);
+    return this.http.get(this.endpoint + "/" + id);
 
   }
- 
-}
 
+}
 

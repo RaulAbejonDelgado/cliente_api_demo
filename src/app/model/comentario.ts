@@ -5,11 +5,11 @@ export class Comentario {
     familia: Family[];
     titulo: string;
     texto: string;
-    persona:Person[];
-    selfId:number;
-    fecha:Date;
+    persona: Person[];
+    selfId: number;
+    fecha: Date;
 
-    constructor(){
+    constructor() {
         this.familia = [];
         this.texto = "";
         this.titulo = "";

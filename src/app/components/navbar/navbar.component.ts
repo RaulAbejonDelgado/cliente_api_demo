@@ -10,9 +10,15 @@ export class NavbarComponent implements OnInit {
   constructor() {
 
     console.log("NavbarComponent -- constructor")
-   }
+  }
 
   ngOnInit() {
+  }
+
+  logOut() {
+    console.log("Desconectando.....");
+
+
   }
 
 }

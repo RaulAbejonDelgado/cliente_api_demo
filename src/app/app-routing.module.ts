@@ -11,14 +11,13 @@ import { ComentariosGuard } from './guards/comentarios.guard';
 
 const routes: Routes = [
 
-  { path: 'comentario-nuevo', component: NewCommentComponent, canActivate:[ComentariosGuard] },
-  //{ path: 'comentario-nuevo',component: NewCommentComponent},
-  { path: 'login',component: LoginComponent},
-  { path: 'registro',component: RegistroComponent},
-  { path: 'personas',component: PersonasComponent},
-  { path: 'familias',component: FamiliasComponent},
-  { path: 'inicio',component: HomeComponent},
-  { path: '', redirectTo: '/inicio', pathMatch: 'full'},
+  { path: 'comentario-nuevo', component: NewCommentComponent, canActivate: [ComentariosGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'personas', component: PersonasComponent },
+  { path: 'familias', component: FamiliasComponent },
+  { path: 'inicio', component: HomeComponent },
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

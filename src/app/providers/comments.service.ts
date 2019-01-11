@@ -8,19 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class CommentsService {
 
-  endpoint : string;
+  endpoint: string;
 
-  constructor(public http : HttpClient) { 
+  constructor(public http: HttpClient) {
 
     console.log("CommentsService -- constructor");
 
     this.endpoint = "http://localhost:8080/API/publicaciones/coments";
-    
-
 
   }
 
-  getAll() :  Observable <any>{
+  getAll(): Observable<any> {
 
     console.log("CommentsService -- getAll");
 
@@ -28,24 +26,15 @@ export class CommentsService {
 
   }
 
-  add(comentario : Comentario): Observable <any>{
-    let body  = {
-      //"id": tarea.id,
-      "texto": comentario.texto,
-      "familia":comentario.familia,
-      "persona":comentario.persona,
-      "titulo":comentario.titulo
- 
-    };  
+  add(comentario: Comentario): Observable<any> {
+
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type': 'application/json'
       })
     };
-    console.log(comentario);
-    console.log(JSON.stringify(comentario));
-    
-    return this.http.post( this.endpoint, JSON.stringify(comentario),httpOptions  );
+
+    return this.http.post(this.endpoint, JSON.stringify(comentario), httpOptions);
 
   }
 }

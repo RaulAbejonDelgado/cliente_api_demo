@@ -2,7 +2,8 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/inicio']">Foro familias</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars"></i>
     </button>
@@ -18,7 +19,7 @@
           <a class="nav-link" [routerLink]="['/personas']">Personas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/familias']">Familias</a>
+          <a class="nav-link" [routerLink]="['/familias']">Familias</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" [routerLink]="['/familias']">Comentarios</a>
@@ -27,10 +28,13 @@
           <a class="nav-link" [routerLink]="['/comentario-nuevo']">Comentario nuevo</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/registro']">Registro</a>
+          <a class="nav-link" [routerLink]="['/registro']">Registro</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/login']">Identificarse</a>
+          <a class="nav-link" (click)="logOut()">Desconectarse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']">Identificarse</a>
         </li>
       </ul>
     </div>
