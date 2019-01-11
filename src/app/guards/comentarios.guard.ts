@@ -1,3 +1,4 @@
+import { PersonsService } from './../providers/persons.service';
 import { LoginService } from './../providers/login.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
@@ -8,23 +9,23 @@ import { Observable } from 'rxjs';
 })
 export class ComentariosGuard implements CanActivate {
 
-  constructor(private loginService : LoginService,private router: Router){
+  constructor(private loginService : LoginService,private personService:PersonsService,private router: Router){
 
   }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    console.trace("ComentariosGuard - canActivate ");
-    if ( !this.loginService.isLogged() ){
+    console.log("ComentariosGuard - canActivate ");
+    if ( !this.personService.checkLogState() ){
 
-      console.log("Guard estado :"+ this.loginService.isLogged());
+      //console.log("Guard estado :"+ this.personService.isLogged());
       this.router.navigate(['login']);
       return false;
 
     }
 
     
-    console.log("Guard estado :"+ !this.loginService.isLogged()+" redirecionando a comentarios");
+    //console.log("Guard estado :"+ !this.loginService.isLogged()+" redirecionando a comentarios");
     return true;
   }
 }

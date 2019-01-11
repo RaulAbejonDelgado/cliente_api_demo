@@ -61,7 +61,7 @@ export class LoginService {
 
 
   isLogged(): boolean{
-    console.trace("LoginService - isLogged")
+    console.log("LoginService - isLogged")
     let resul: boolean;
     if(this.persona){
       console.debug('Usuario logeado');
@@ -74,12 +74,12 @@ export class LoginService {
   }
 
   logOut(){
-    console.trace("LoginService - logOut")
+    console.log("LoginService - logOut")
     this.persona = undefined;
   }
 
   login( u: Person): boolean{
-    console.trace('LoginService login %o',u);
+    console.log('LoginService login %o',u);
     if (u && u.nombre === USUARIO_NOMBRE && u.password === USUARIO_PASSWORD ){
        console.debug(' usuario logeado');
       this.persona = u;      

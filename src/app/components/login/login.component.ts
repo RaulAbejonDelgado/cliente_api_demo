@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
   // }
 
   sumitar(){
-    console.trace("LoginComponent - sumitar")
+    console.log("LoginComponent - sumitar")
     //todo llamar al servicio de login
 
     //recoger parametros del formulario
@@ -77,6 +77,27 @@ export class LoginComponent implements OnInit {
       // this.logueo = false;
     }
 
+  }
+
+  login(){
+    console.log("FamiliasComponent -- sumitar");
+    console.log("controls %o" ,this.formulario.controls);
+    let persona = new Person();
+    
+    persona.correo = this.formulario.controls.correo.value;
+    persona.password = this.formulario.controls.password.value;
+
+    this.personaService.checkLogin(persona).subscribe(res =>{
+      console.log(res);
+      if (res!= null){
+        this.personaService.setLogState(true);
+        this.router.navigate(['comentario-nuevo']);
+      }
+      
+    });
+    if(this.flag){
+     
+    }
   }
 
   }
