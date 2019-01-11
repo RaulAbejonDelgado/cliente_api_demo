@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
      
 
     });
-    this.mensaje = "No se reconoce el usuario"+
+    this.mensaje = "No se reconoce el usuario."+
     "Vuelva a intentarlo o registrese por favor"  ; 
     this.hayMensaje = true;
     
