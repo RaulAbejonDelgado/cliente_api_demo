@@ -22,13 +22,13 @@ export class LoginComponent implements OnInit {
     this.mensaje= "";
     this.hayMensaje = false;
     this.formulario = new FormGroup({
-      correo: new FormControl('',
+      correo: new FormControl('drohne@gmail.com',
         [
           Validators.required,
           Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$'),
           Validators.maxLength(200)
         ]),
-      password: new FormControl('',
+      password: new FormControl('drohne',
         [
           Validators.required,
           Validators.minLength(6),

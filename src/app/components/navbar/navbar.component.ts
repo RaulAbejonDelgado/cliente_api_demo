@@ -27,4 +27,10 @@ export class NavbarComponent implements OnInit {
 
   }
 
+  isLogued():boolean{
+    let resul = false;
+    resul = this.personService.checkLogState();
+    return resul;
+  }
+
 }

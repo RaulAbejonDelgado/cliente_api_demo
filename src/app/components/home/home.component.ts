@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit {
         this.comentarios.push(element);
 
       });
+      this.comentarios.reverse();
+      this.comentarios = this.comentarios.slice(0,2);
     })
 
   }

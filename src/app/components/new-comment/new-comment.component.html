@@ -1,4 +1,5 @@
-<div class="container">
+<div class="row">
+  <div class="col-8">
   <p *ngIf="hayMensaje" class="alert alert-success">Comentario creado correctamente</p>
   <form novalidate [formGroup]="formulario" (ngSubmit)="sumitar()">
     <div class="form-row justify-content-md-center">
@@ -9,15 +10,15 @@
     </div>
     <div class="form-row justify-content-md-center">
       <div class="form-group">
-        <label for="nombre"> Nombre:</label>
-        <input type="text" formControlName="nombre" class="form-control" name="nombre" placeholder="Usuario">
+
+        <input disabled type="text" formControlName="nombre" class="form-control" name="nombre" placeholder="Usuario">
       </div>
 
       <div class="form-row justify-content-md-center">
         <div class="form-group">
-          <label for="familia"> Familia</label><br>
-          <select id="familySelector" formControlName="familia">
-            <option *ngFor="let familia of familias" value="{{familia.selfId}}">{{familia.nombre}}</option>
+
+          <select  id="familySelector" formControlName="familia" [(ngModel)]='persona.familyId'>
+            <option disabled *ngFor="let familia of familias" value="{{familia.selfId}}">{{familia.nombre}}</option>
           </select>
         </div>
       </div>
@@ -28,7 +29,7 @@
         <div class="form-group">
           <label for="texto">Comentario</label><br>
           <textarea name="texto" formControlName="texto" placeholder="Deja tu comentario" minlength="5" maxlength="500"
-            cols="50"></textarea>
+            cols="40"></textarea>
         </div>
       </div>
 
@@ -43,4 +44,15 @@
 
 
   </form>
+</div>
+<div class="col-4">
+    <h3>Comentarios</h3>
+    <ul>
+      <li *ngFor="let comentario of comentarios"><a [routerLink]="['../comentario-detalle', comentario.selfId ]">{{comentario.titulo}}</a></li>
+    </ul>
+    <!-- <h3>Comentarios propios </h3>
+    <ul>
+        <li *ngFor="let c of comentariosPropios">{{c.titulo}}</li>
+    </ul> -->
+</div>
 </div>

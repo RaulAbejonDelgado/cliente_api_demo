@@ -2,6 +2,7 @@ import { Comentario } from 'src/app/model/comentario';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Person } from '../model/person';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,12 @@ export class CommentsService {
 
   }
 
+  getBySelfId(selfId:number):Observable<any>{
+
+    return this.http.get(this.endpoint+"/"+selfId);
+    
+  }
+
   add(comentario: Comentario): Observable<any> {
 
     const httpOptions = {
@@ -36,5 +43,10 @@ export class CommentsService {
 
     return this.http.post(this.endpoint, JSON.stringify(comentario), httpOptions);
 
+  }
+
+  getCommentsByUser(p:Person): Observable<any>{
+
+    return this.http.get(this.endpoint+"/byUser/"+p.selfId);
   }
 }

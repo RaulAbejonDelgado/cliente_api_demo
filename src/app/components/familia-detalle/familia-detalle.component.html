@@ -1,0 +1,12 @@
+<div class="card text-center">
+    <div class="card-header">
+      {{familia.nombre}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Componentes</h5>
+      <ul>
+        <li *ngFor="let persona of familia.personas">{{persona.nombre}}</li>
+      </ul>
+      <p class="card-text"></p>
+    </div>
+  </div>

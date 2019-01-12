@@ -18,8 +18,11 @@ export class NewCommentComponent implements OnInit {
   formulario: FormGroup;
   personaArray: Person[];
   comentario: Comentario;
+  comentarios: Comentario[];
+  comentariosPropios : Comentario[];
   mensaje: string;
   hayMensaje: boolean;
+  persona : Person;
 
   constructor(private familiasService: FamilysService, private personasService: PersonsService, private comentariosService: CommentsService) {
 
@@ -45,12 +48,17 @@ export class NewCommentComponent implements OnInit {
       ])
 
     })
+    this.comentarios = [];
     this.mensaje = "";
     this.hayMensaje = false,
-      this.comentario = new Comentario();
+    this.comentario = new Comentario();
     this.familias = [];
     this.personaArray = [];
+    this.persona = new Person();
     this.getFamilys();
+    this.getComments();
+    //this.getSelfComments();
+    this.setData();
   }
 
   ngOnInit() {
@@ -92,12 +100,39 @@ export class NewCommentComponent implements OnInit {
             this.comentariosService.add(this.comentario).subscribe(data => {
               this.mensaje = "Comentario creado correctamente";
               this.hayMensaje = true;
+              this.getComments();
             });
           });
         });
       });
     })
   }
+
+  getComments(){
+    this.comentarios = [];
+    this.comentariosService.getAll().subscribe(res=>{
+      res.forEach(comentario => {
+        this.comentarios.push(comentario);
+      });
+    })
+  }
+
+  // getSelfComments(){
+  //   this.comentariosPropios = [];
+  //   let persona : Person = this.personasService.getUser();
+  //   this.comentariosService.getCommentsByUser(persona).subscribe(c=>{
+  //     c.forEach(comentario => {
+  //       console.log(comentario);
+  //       this.comentariosPropios.push(comentario);
+  //     });
+  //   });
+  // }
+
+  setData(){
+    this.persona = this.personasService.getUser();
+    this.formulario.controls.nombre.setValue(this.persona.nombre);
+    
+}
 }
 
 

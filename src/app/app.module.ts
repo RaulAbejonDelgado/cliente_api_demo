@@ -19,6 +19,11 @@ import { FamilysService } from './providers/familys.service';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComentariosGuard } from './guards/comentarios.guard';
+import { ComentariosComponent } from './components/comentarios/comentarios.component';
+import { ComentariosDetalleComponent } from './components/comentarios-detalle/comentarios-detalle.component';
+import { FamiliaDetalleComponent } from './components/familia-detalle/familia-detalle.component';
+import { PersonaDetalleComponent } from './components/persona-detalle/persona-detalle.component';
+import { PerilComponent } from './components/peril/peril.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,12 @@ import { ComentariosGuard } from './guards/comentarios.guard';
     PersonasComponent,
     FamiliasComponent,
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
+    ComentariosComponent,
+    ComentariosDetalleComponent,
+    FamiliaDetalleComponent,
+    PersonaDetalleComponent,
+    PerilComponent
   ],
   imports: [
     BrowserModule,

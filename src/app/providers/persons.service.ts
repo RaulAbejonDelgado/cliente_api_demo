@@ -9,9 +9,11 @@ import { Person } from '../model/person';
 export class PersonsService {
   endpoint: string;
   isLogued: boolean;
+  personaLogued: Person;
   constructor(public http : HttpClient) { 
     console.log("PersonsService -- constructor");
     this.isLogued = false;
+    this.personaLogued = new Person();
     this.endpoint ="http://localhost:8080/API/publicaciones/person";
   }
   /**
@@ -48,6 +50,12 @@ getByName(nombre:string): Observable <any>{
 
 }
 
+getBySelfId(selfId:number): Observable <any>{
+  
+  return this.http.get(this.endpoint+"/"+selfId);
+
+}
+
 checkLogin(persona:Person): Observable<any>{
 
   let person = new Person();
@@ -60,11 +68,21 @@ checkLogin(persona:Person): Observable<any>{
   x.subscribe(res=>{
     console.log("*************");
     console.log(res);
-    this.isLogued = false;
+    console.log(res['nombre']);
+    this.personaLogued.nombre= res['nombre'];
+    this.personaLogued.familyId= res['familyId'];
+    this.personaLogued.selfId= res['selfId'];
+    this.personaLogued.correo= res['correo'];
+    this.personaLogued.password= res['password'];
+    console.log(this.personaLogued);
+    //this.getBySelfId(this.personaLogued.selfId);
+    // this.isLogued = false;
   })
   return this.http.post(this.endpoint+"/login",JSON.stringify(persona),httpOptions)
 
 }
+
+
 
 checkLogState():boolean{
   
@@ -78,6 +96,10 @@ setLogState(logueado:boolean){
 
 logOut() {
   this.isLogued = false;
+}
+
+getUser():Person{
+return this.personaLogued;
 }
 
 }

@@ -32,6 +32,7 @@ export class PersonasComponent implements OnInit {
         this.personas.push(element);
 
       });
+      this.personas.reverse();
     });
 
   }

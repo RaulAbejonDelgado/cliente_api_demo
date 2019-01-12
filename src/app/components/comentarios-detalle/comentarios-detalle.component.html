@@ -1,0 +1,12 @@
+
+<div class="card text-center">
+    <div class="card-header">
+       
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{comentario.titulo}}</h5> 
+      <p class="card-text">{{comentario.texto}}</p>
+      <p *ngFor="let p of comentario.persona"><small>{{p.nombre}}</small></p>
+      <p class="card-text"><small>{{comentario.fecha | date:'dd-MM-yyyy-h:mm:ss a z'}}</small></p>
+    </div>
+  </div> 

@@ -1,6 +1,5 @@
 import { Family } from './../../model/family';
 import { FamilysService } from './../../providers/familys.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -27,13 +26,10 @@ export class FamiliasComponent implements OnInit {
     console.log("FamiliasComponent -- getAll");
 
     this.familiaService.getAll().subscribe(f => {
-      console.log(f);
       f.forEach(element => {
-        console.log(element);
         this.familias.push(element);
-        console.log(element.personas);
       });
-
+      this.familias.reverse();
     });
 
   }
