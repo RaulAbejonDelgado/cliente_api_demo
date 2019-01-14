@@ -10,10 +10,12 @@ export class PersonsService {
 
   endpoint: string;
   isLogued: boolean;
+  isAdmin : boolean;
   personaLogued: Person;
   constructor(public http : HttpClient) { 
     console.log("PersonsService -- constructor");
     this.isLogued = false;
+    this.isAdmin = false;
     this.personaLogued = new Person();
     this.endpoint ="http://localhost:8080/API/publicaciones/person";
   }
@@ -116,6 +118,16 @@ logOut() {
 
 getUser():Person{
 return this.personaLogued;
+}
+
+checkAdmin(): boolean{
+  this.isAdmin = false;
+
+  if(this.personaLogued.nombre === "admin"){
+
+    this.isAdmin = true;
+  }
+  return this.isAdmin;
 }
 
 }

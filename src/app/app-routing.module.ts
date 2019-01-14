@@ -1,3 +1,4 @@
+import { BackofficeGuard } from './guards/backoffice.guard';
 import { PersonaDetalleComponent } from './components/persona-detalle/persona-detalle.component';
 import { ComentariosDetalleComponent } from './components/comentarios-detalle/comentarios-detalle.component';
 import { NgModule } from '@angular/core';
@@ -23,14 +24,14 @@ import { BackofficeCommentsEditableComponent } from './components/backoffice-sec
 
 const routes: Routes = [
 
-  { path: 'backoffice-comment-detail/:id', component: BackofficeCommentsEditableComponent },
-  { path: 'backoffice-family-detail/:id', component: BackofficeFamilyDetailComponent },
-  { path: 'backoffice-person-detail/:id', component: BackofficePersonEditableComponent },
-  { path: 'backoffice-person', component: BackofficePersonComponent },
-  { path: 'backoffice-family', component: BackofficeFamilyComponent },
-  { path: 'backoffice-comment', component: BackofficeCommentComponent },
-  { path: 'backoffice', component: BackofficeComponent },
-  { path: 'perfil', component: PerilComponent },
+  { path: 'backoffice-comment-detail/:id', component: BackofficeCommentsEditableComponent, canActivate: [BackofficeGuard] },
+  { path: 'backoffice-family-detail/:id', component: BackofficeFamilyDetailComponent, canActivate: [BackofficeGuard] },
+  { path: 'backoffice-person-detail/:id', component: BackofficePersonEditableComponent, canActivate: [BackofficeGuard] },
+  { path: 'backoffice-person', component: BackofficePersonComponent, canActivate: [BackofficeGuard] },
+  { path: 'backoffice-family', component: BackofficeFamilyComponent, canActivate: [BackofficeGuard] },
+  { path: 'backoffice-comment', component: BackofficeCommentComponent, canActivate: [BackofficeGuard]  },
+  { path: 'backoffice', component: BackofficeComponent, canActivate: [BackofficeGuard] },
+  { path: 'perfil', component: PerilComponent, canActivate: [ComentariosGuard] },
   { path: 'persona-detalle/:id', component: PersonaDetalleComponent },
   { path: 'familia-detalle/:id', component: FamiliaDetalleComponent },
   { path: 'comentario-detalle/:id', component: ComentariosDetalleComponent },

@@ -1,3 +1,4 @@
+import { BackofficeGuard } from './guards/backoffice.guard';
 import { PersonsService } from './providers/persons.service';
 import { CommentsService } from './providers/comments.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -75,7 +76,8 @@ import { BackofficeCommentsEditableComponent } from './components/backoffice-sec
     CommentsService,
     PersonsService,
     FamilysService,
-    ComentariosGuard
+    ComentariosGuard,
+    BackofficeGuard
 
   ],
   bootstrap: [AppComponent]
