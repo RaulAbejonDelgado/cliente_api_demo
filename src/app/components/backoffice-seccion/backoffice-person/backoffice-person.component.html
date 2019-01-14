@@ -1,0 +1,37 @@
+<app-backoffice-navbar></app-backoffice-navbar>
+<p *ngIf="hayMensaje" class="alert alert-success">{{mensaje}}</p>
+<i [routerLink]="['../backoffice-person-detail',0]" class="far fa-plus-square fa-3x"></i>
+<table style="width:100%">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Familia</th>
+            <th>Acciones</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let persona of personas">
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.correo}}</td>
+            <td>{{persona.familyId}}</td>
+            <td>
+                <i class="fas fa-trash-alt fa-3x text-danger" (click)="elimniar(persona.selfId)" ></i> 
+                <i [routerLink]="['../backoffice-person-detail',persona.selfId]"  class="fas fa-edit fa-3x"></i>
+                
+            </td>
+            
+        </tr>
+        
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Familia</th>
+            <th>Acciones</th>
+        </tr>
+    </tfoot>
+</table>
+

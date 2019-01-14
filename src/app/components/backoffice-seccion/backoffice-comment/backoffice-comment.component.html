@@ -1,0 +1,39 @@
+<app-backoffice-navbar></app-backoffice-navbar>
+<table style="width:100%">
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Texto</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comentario of comentarios">
+            <td>{{comentario.titulo}}</td>
+            <td>{{comentario.persona[0].nombre}}</td>
+            <td>{{comentario.texto}}</td>
+            <td>{{comentario.fecha}}</td>
+            <td>
+                    <i class="fas fa-trash-alt fa-3x text-danger" ></i> 
+                    <i class="fas fa-edit fa-3x"
+                    ></i>
+                </td>
+            
+        </tr>
+        
+    </tbody>
+    <tfoot>
+        <tr>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Texto</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+        </tr>
+    </tfoot>
+</table>
+
+

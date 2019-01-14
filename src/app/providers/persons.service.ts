@@ -7,6 +7,7 @@ import { Person } from '../model/person';
   providedIn: 'root'
 })
 export class PersonsService {
+
   endpoint: string;
   isLogued: boolean;
   personaLogued: Person;
@@ -39,6 +40,21 @@ export class PersonsService {
       })
     };
     return this.http.post( this.endpoint, JSON.stringify(persona),httpOptions  );
+}
+
+update(persona: Person): Observable<any>{
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+};
+  return this.http.put( this.endpoint+"/"+persona.selfId, JSON.stringify(persona) , httpOptions );
+}
+
+delete(id: number): Observable <any>{
+  let uri = this.endpoint + "/"+id;
+  console.trace("PersonService - delete->" + uri);
+  return this.http.delete(uri);
 }
 /**
  * 

@@ -13,9 +13,21 @@ import { ComentariosGuard } from './guards/comentarios.guard';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
 import { FamiliaDetalleComponent } from './components/familia-detalle/familia-detalle.component';
 import { PerilComponent } from './components/peril/peril.component';
+import { BackofficeComponent } from './components/backoffice-seccion/backoffice/backoffice.component';
+import { BackofficeFamilyComponent } from './components/backoffice-seccion/backoffice-family/backoffice-family.component';
+import { BackofficePersonComponent } from './components/backoffice-seccion/backoffice-person/backoffice-person.component';
+import { BackofficeCommentComponent } from './components/backoffice-seccion/backoffice-comment/backoffice-comment.component';
+import { BackofficePersonEditableComponent } from './components/backoffice-seccion/backoffice-person-editable/backoffice-person-editable.component';
+import { BackofficeFamilyDetailComponent } from './components/backoffice-seccion/backoffice-family-detail/backoffice-family-detail.component';
 
 const routes: Routes = [
-  
+
+  { path: 'backoffice-family-detail/:id', component: BackofficeFamilyDetailComponent },
+  { path: 'backoffice-person-detail/:id', component: BackofficePersonEditableComponent },
+  { path: 'backoffice-person', component: BackofficePersonComponent },
+  { path: 'backoffice-family', component: BackofficeFamilyComponent },
+  { path: 'backoffice-comment', component: BackofficeCommentComponent },
+  { path: 'backoffice', component: BackofficeComponent },
   { path: 'perfil', component: PerilComponent },
   { path: 'persona-detalle/:id', component: PersonaDetalleComponent },
   { path: 'familia-detalle/:id', component: FamiliaDetalleComponent },

@@ -1,0 +1,35 @@
+<app-backoffice-navbar></app-backoffice-navbar>
+<i [routerLink]="['../backoffice-family-detail',0]" class="far fa-plus-square fa-3x"></i>
+
+<table style="width:100%">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>personas</th>
+            <th>Acciones</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let familia of familias">
+            <td>{{familia.nombre}}</td>
+            <td><p *ngFor="let persona of familia.personas">{{persona.nombre}}</p></td>
+            <td>
+                    <i class="fas fa-trash-alt fa-3x text-danger" (click)="elimniar(familia.selfId)" ></i> 
+                    <i class="fas fa-edit fa-3x" [routerLink]="['../backoffice-family-detail',familia.selfId]"
+                    ></i>
+                </td>
+            
+        </tr>
+        
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Nombre</th>
+            <th>Familia</th>
+            <th>Acciones</th>
+        </tr>
+    </tfoot>
+</table>
+
+

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Person } from '../model/person';
+import { Family } from '../model/family';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,10 @@ export class CommentsService {
   getCommentsByUser(p:Person): Observable<any>{
 
     return this.http.get(this.endpoint+"/byUser/"+p.selfId);
+  }
+
+  getCommentsByFamily(f:Family): Observable<any>{
+
+    return this.http.get(this.endpoint+"/byFamily/"+f.selfId);
   }
 }

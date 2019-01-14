@@ -54,8 +54,16 @@ export class LoginComponent implements OnInit {
     this.personaService.checkLogin(persona).subscribe(res => {
      
       if (res != null) {
-        this.personaService.setLogState(true);
-        this.router.navigate(['comentario-nuevo']);
+          console.log(res.nombre);
+          this.personaService.setLogState(true);
+          if(res.nombre === "admin"){
+            this.router.navigate(['backoffice']);
+          }else{
+            this.router.navigate(['comentario-nuevo']);
+          }
+       
+        
+        
       }else{
         
       }

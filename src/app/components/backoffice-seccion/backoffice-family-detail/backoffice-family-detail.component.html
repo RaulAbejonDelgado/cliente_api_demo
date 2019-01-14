@@ -1,0 +1,57 @@
+<a [routerLink]="['../../backoffice-family']">volver</a>
+<form [formGroup]="formulario" (ngSubmit)="editOrCreate()" novalidate>
+<p *ngIf="hayMensaje" class="alert alert-success">{{mensaje}}</p>
+    <div class="form-row justify-content-md-center">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="nombre" class="form-control" name="nombre" placeholder="Nombre de usuario"
+          required>
+          <input type="hidden" formControlName="selfId" class="form-control" name="selfId" placeholder="selfID">
+          <!-- <input type="hidden" formControlName="_id" class="form-control" name="_id" placeholder="_id"> -->
+
+        <small *ngIf="formulario.controls.nombre.errors?.required" class="text-danger">El campos es requerido</small>
+        <small *ngIf="formulario.controls.nombre.errors?.minlength" class="text-danger">El nombre debe tener mas de 2
+          caracteres</small>
+        <small *ngIf="formulario.controls.nombre.errors?.maxlength" class="text-danger">El nombre debe tener menos de
+          45 caracteres</small>
+      </div>
+    </div>
+    <div class="form-row justify-content-md-center">
+      <div class="form-group">
+        <label for="personas"> Personas</label><br>
+        <!-- <select id="familySelector" formControlName="familySelector" [(ngModel)]="persona.familyId">
+          <option *ngFor="let familia of familias" value="{{familia.selfId}}">{{familia.nombre}}</option>
+        </select> -->
+        <ul>
+          <li *ngFor="let persona of familia.personas; let i = index" value="persona.selfId">{{persona.nombre}} - <i class="fas fa-trash-alt text-danger" (click)="elimniarPersona(i)" ></i> 
+          </li>
+        </ul>
+        <a class="btn btn-success" (click)="nuevoPersona()">Añadir persona</a>
+        <div formArrayName="personas">
+            <div *ngFor="let persona of formulario.get('personas').controls; let i = index;">
+              <div [formGroupName]="i">
+                <div >
+                  <!-- <input type="text" formControlName="persona" class="form-control" name="persona"> -->
+                  <select id="familySelector" formControlName="persona"  >
+                    <option value="">Vacio</option>
+                    <option *ngFor="let persona of personas" value="{{persona.selfId}}">{{persona.nombre}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div> 
+    </div>
+    <div class="form-row justify-content-md-center">
+  
+    </div>
+  
+    <div class="form-row justify-content-md-center">
+      <div class="form-group">
+        <input type="submit" class="btn btn-info" value="{{persona.selfId == 0 ? 'Nuevo' : 'Editar'}}">
+      </div>
+  
+    </div>
+  
+  
+  </form>

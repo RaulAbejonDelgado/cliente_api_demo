@@ -57,7 +57,7 @@ export class NewCommentComponent implements OnInit {
     this.persona = new Person();
     this.getFamilys();
     this.getComments();
-    //this.getSelfComments();
+    this.getSelfComments();
     this.setData();
   }
 
@@ -65,7 +65,7 @@ export class NewCommentComponent implements OnInit {
   }
 
   getFamilys() {
-    console.log("FamiliasComponent -- getAll");
+    console.log("NewCommentComponent -- getAll");
 
     this.familiasService.getAll().subscribe(f => {
 
@@ -101,6 +101,7 @@ export class NewCommentComponent implements OnInit {
               this.mensaje = "Comentario creado correctamente";
               this.hayMensaje = true;
               this.getComments();
+              this.getSelfComments();
             });
           });
         });
@@ -117,16 +118,15 @@ export class NewCommentComponent implements OnInit {
     })
   }
 
-  // getSelfComments(){
-  //   this.comentariosPropios = [];
-  //   let persona : Person = this.personasService.getUser();
-  //   this.comentariosService.getCommentsByUser(persona).subscribe(c=>{
-  //     c.forEach(comentario => {
-  //       console.log(comentario);
-  //       this.comentariosPropios.push(comentario);
-  //     });
-  //   });
-  // }
+  getSelfComments(){
+    this.comentariosPropios = [];
+    let persona : Person = this.personasService.getUser();
+    this.comentariosService.getCommentsByUser(persona).subscribe(c=>{
+      c.forEach(comentario => {
+        this.comentariosPropios.push(comentario);
+      });
+    });
+  }
 
   setData(){
     this.persona = this.personasService.getUser();

@@ -33,4 +33,12 @@ export class NavbarComponent implements OnInit {
     return resul;
   }
 
+  isAdmin():boolean{
+    let resul = false;
+    if(this.personService.getUser().nombre === "admin"){
+      resul = true;
+    }
+    return resul;
+  }
+
 }

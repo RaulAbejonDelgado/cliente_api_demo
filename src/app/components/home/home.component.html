@@ -8,7 +8,7 @@
             {{comentario.titulo }}
           </h2>
           <h3 class="post-subtitle">
-            {{comentario.texto }}
+            {{comentario.texto | slice:0:25 }} ....
           </h3>
         </a>
         <p class="post-meta">Escrito por

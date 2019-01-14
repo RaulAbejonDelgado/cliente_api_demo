@@ -1,9 +1,27 @@
 <a [routerLink]="['../comentario-nuevo']" class="btn btn-primary">Comentario nuevo</a>
-<table width="100%" style="border:1px solid black">
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Familia</th>
+            <th>Autor</th>
+            <th>Titulo</th>
+        </tr>
+    </thead>
   <tbody>
     <tr *ngFor="let comentario of comentarios">
-      <td>{{comentario.persona[0].nombre}} <small>{{comentario.fecha | date:'dd-MM-yyyy-h:mm:ss a z'}}</small></td>
-      <td><a [routerLink]="['../comentario-detalle', comentario.selfId ]" >{{comentario.titulo}}</a></td>
+      <td><a [routerLink]="['../familia-detalle',comentario.familia[0].selfId]">{{comentario.familia[0].nombre}}</a></td>
+      <td><a [routerLink]="['../persona-detalle',comentario.persona[0].selfId]">{{comentario.persona[0].nombre}}</a></td>
+      <td><a [routerLink]="['../comentario-detalle',comentario.selfId]">{{comentario.titulo}}</a></td>
     </tr>
   </tbody>
+  <tfoot>
+      <tr>
+          <th>Familia</th>
+          <th>Autor</th>
+          <th>Titulo</th>
+      </tr>
+  </tfoot>
 </table>
+
+

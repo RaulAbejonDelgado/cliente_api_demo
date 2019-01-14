@@ -33,6 +33,7 @@
               <a *ngIf="!isLogued()" class="dropdown-item" [routerLink]="['/registro']">Registro</a>
               <a *ngIf="isLogued()" class="dropdown-item" (click)="logOut()">Desconectarse</a>
               <a *ngIf="isLogued()" class="dropdown-item" [routerLink]="['/perfil']" >perfil</a>
+              <a *ngIf="isAdmin()" class="dropdown-item" [routerLink]="['/backoffice']" >Backoffice</a>
             </div>
           </div>
       </ul>

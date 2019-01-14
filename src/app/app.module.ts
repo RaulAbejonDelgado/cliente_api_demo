@@ -3,6 +3,7 @@ import { CommentsService } from './providers/comments.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -24,6 +25,13 @@ import { ComentariosDetalleComponent } from './components/comentarios-detalle/co
 import { FamiliaDetalleComponent } from './components/familia-detalle/familia-detalle.component';
 import { PersonaDetalleComponent } from './components/persona-detalle/persona-detalle.component';
 import { PerilComponent } from './components/peril/peril.component';
+import { BackofficeComponent } from './components/backoffice-seccion/backoffice/backoffice.component';
+import { BackofficeNavbarComponent } from './components/backoffice-seccion/backoffice-navbar/backoffice-navbar.component';
+import { BackofficePersonComponent } from './components/backoffice-seccion/backoffice-person/backoffice-person.component';
+import { BackofficeFamilyComponent } from './components/backoffice-seccion/backoffice-family/backoffice-family.component';
+import { BackofficeCommentComponent } from './components/backoffice-seccion/backoffice-comment/backoffice-comment.component';
+import { BackofficePersonEditableComponent } from './components/backoffice-seccion/backoffice-person-editable/backoffice-person-editable.component';
+import { BackofficeFamilyDetailComponent } from './components/backoffice-seccion/backoffice-family-detail/backoffice-family-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +50,15 @@ import { PerilComponent } from './components/peril/peril.component';
     ComentariosDetalleComponent,
     FamiliaDetalleComponent,
     PersonaDetalleComponent,
-    PerilComponent
+    PerilComponent,
+    BackofficeComponent,
+    BackofficeNavbarComponent,
+    BackofficePersonComponent,
+    BackofficeFamilyComponent,
+    BackofficeCommentComponent,
+    BackofficePersonEditableComponent,
+    BackofficeFamilyDetailComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -50,6 +66,7 @@ import { PerilComponent } from './components/peril/peril.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+    
   ],
   providers: [
 
