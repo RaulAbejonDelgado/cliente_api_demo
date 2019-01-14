@@ -1,6 +1,7 @@
 import { CommentsService } from 'src/app/providers/comments.service';
 import { Comentario } from './../../../model/comentario';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-backoffice-comment',
@@ -9,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BackofficeCommentComponent implements OnInit {
   comentarios : Comentario[];
-  constructor(private comentasService:CommentsService) {
+  constructor(private comentasService:CommentsService,private router: Router) {
     this.comentarios = [];
     this.getAll();
+
+    
    }
 
   ngOnInit() {
@@ -25,6 +28,23 @@ export class BackofficeCommentComponent implements OnInit {
         
       });
     })
+  }
+
+  elimniar(id: number) {
+    console.log(id);
+    let txt;
+    let r = confirm("Esta apunto de eliminar un registro");
+    if (r == true) {
+      this.comentasService.delete(id).subscribe(data => {
+        console.debug("Eliminado data");
+
+        this.getAll();
+        
+      })
+    } else {
+      txt = "You pressed Cancel!";
+    }
+    this.router.navigate(['../../backoffice-comment']);
   }
 
 }

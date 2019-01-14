@@ -1,0 +1,53 @@
+<a [routerLink]="['../../backoffice-comment']">volver</a>
+<form [formGroup]="formulario" (ngSubmit)="editOrCreate()" novalidate>
+<p *ngIf="hayMensaje" class="alert alert-success">{{mensaje}}</p>
+    <div class="form-row justify-content-md-center">
+      <div class="form-group">
+        <label for="nombre">titulo</label>
+        <input type="text" formControlName="titulo" class="form-control" name="titulo" placeholder="Titulo del comentario"
+          required>
+          <input type="hidden" formControlName="selfId" class="form-control" name="selfId" placeholder="selfID">
+          <!-- <input type="hidden" formControlName="_id" class="form-control" name="_id" placeholder="_id"> -->
+<!-- 
+        <small *ngIf="formulario.controls.nombre.errors?.required" class="text-danger">El campos es requerido</small>
+        <small *ngIf="formulario.controls.nombre.errors?.minlength" class="text-danger">El nombre debe tener mas de 2
+          caracteres</small>
+        <small *ngIf="formulario.controls.nombre.errors?.maxlength" class="text-danger">El nombre debe tener menos de
+          45 caracteres</small> -->
+      </div>
+    </div>
+    <div class="form-group">
+
+      <!-- <input disabled type="text" formControlName="personas" class="form-control" name="personas" placeholder="Usuario"> -->
+
+    </div>
+
+    <div class="form-row justify-content-md-center">
+      <label for="personaSelector">Personas</label>
+      <select  id="personaSelector" formControlName="personas" >
+        <option *ngFor="let persona of personas" value="{{persona.selfId}}">{{persona.nombre}}</option>
+      </select>
+    </div>
+    <div class="form-row justify-content-md-center">
+      <div class="form-group">
+          <label for="familySelector">Familias</label>
+        <select  id="familySelector" formControlName="familia" >
+          <option *ngFor="let familia of familias" value="{{familia.selfId}}">{{familia.nombre}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row justify-content-md-center">
+      <label for="nombre">Comentario</label>
+      <input type="text" formControlName="texto" class="form-control" name="texto" placeholder="texto del comentario"
+        required>
+    </div>
+  
+    <div class="form-row justify-content-md-center">
+      <div class="form-group">
+        <input type="submit" class="btn btn-info" value="Crear">
+      </div>
+  
+    </div>
+  
+  
+  </form>

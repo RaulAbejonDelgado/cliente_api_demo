@@ -1,4 +1,5 @@
 <app-backoffice-navbar></app-backoffice-navbar>
+<i [routerLink]="['../backoffice-comment-detail',0]" class="far fa-plus-square fa-3x"></i>
 <table style="width:100%">
     <thead>
         <tr>
@@ -17,8 +18,8 @@
             <td>{{comentario.texto}}</td>
             <td>{{comentario.fecha}}</td>
             <td>
-                    <i class="fas fa-trash-alt fa-3x text-danger" ></i> 
-                    <i class="fas fa-edit fa-3x"
+                <i class="fas fa-trash-alt fa-3x text-danger" (click)="elimniar(comentario.selfId)" ></i> 
+                <i class="fas fa-edit fa-3x" [routerLink]="['../backoffice-comment-detail',comentario.selfId]"
                     ></i>
                 </td>
             

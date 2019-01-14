@@ -55,4 +55,11 @@ export class CommentsService {
 
     return this.http.get(this.endpoint+"/byFamily/"+f.selfId);
   }
+
+  delete(id: number): Observable <any>{
+    let uri = this.endpoint + "/"+id;
+    console.log("CommentsService - delete->" + uri);
+    return this.http.delete(uri);
+  }
+    
 }

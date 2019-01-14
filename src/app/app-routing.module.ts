@@ -19,9 +19,11 @@ import { BackofficePersonComponent } from './components/backoffice-seccion/backo
 import { BackofficeCommentComponent } from './components/backoffice-seccion/backoffice-comment/backoffice-comment.component';
 import { BackofficePersonEditableComponent } from './components/backoffice-seccion/backoffice-person-editable/backoffice-person-editable.component';
 import { BackofficeFamilyDetailComponent } from './components/backoffice-seccion/backoffice-family-detail/backoffice-family-detail.component';
+import { BackofficeCommentsEditableComponent } from './components/backoffice-seccion/backoffice-comments-editable/backoffice-comments-editable.component';
 
 const routes: Routes = [
 
+  { path: 'backoffice-comment-detail/:id', component: BackofficeCommentsEditableComponent },
   { path: 'backoffice-family-detail/:id', component: BackofficeFamilyDetailComponent },
   { path: 'backoffice-person-detail/:id', component: BackofficePersonEditableComponent },
   { path: 'backoffice-person', component: BackofficePersonComponent },
