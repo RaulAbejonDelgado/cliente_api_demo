@@ -45,6 +45,7 @@ export class BackofficeFamilyDetailComponent implements OnInit {
       ]),
       personas: new FormArray( [this.crearPersonFormGroup()]),
       selfId : new FormControl(''),
+      
   })
 
   this.setData();

@@ -21,6 +21,7 @@ export class BackofficeCommentComponent implements OnInit {
   }
 
   getAll(){
+    this.comentarios = [];
     this.comentasService.getAll().subscribe(res=>{
       res.forEach(comentario => {
         this.comentarios.push(comentario);

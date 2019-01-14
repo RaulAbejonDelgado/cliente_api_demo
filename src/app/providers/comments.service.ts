@@ -46,6 +46,18 @@ export class CommentsService {
 
   }
 
+  update(comentario: Comentario): Observable<any> {
+    console.log("CommentsService -- update")
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.put( this.endpoint+"/"+comentario.selfId, JSON.stringify(comentario) , httpOptions );
+
+  }
+
   getCommentsByUser(p:Person): Observable<any>{
 
     return this.http.get(this.endpoint+"/byUser/"+p.selfId);

@@ -44,7 +44,6 @@
         <select id="familySelector" formControlName="familySelector" [(ngModel)]='persona.familyId'>
           <option *ngFor="let familia of familias" value="{{familia.selfId}}" >{{familia.nombre}}</option>
         </select>
-        <input id="nuevaFamilia" placeholder="Nueva familia">
       </div>
     </div>
     <div class="form-row justify-content-md-center">
@@ -53,7 +52,7 @@
   
     <div class="form-row justify-content-md-center">
       <div class="form-group">
-        <input type="submit" class="btn btn-info" value="crear">
+        <input type="submit" class="btn btn-info" value="Editar">
       </div>
   
     </div>

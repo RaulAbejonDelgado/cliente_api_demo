@@ -1,8 +1,8 @@
 <app-backoffice-navbar></app-backoffice-navbar>
 <p *ngIf="hayMensaje" class="alert alert-success">{{mensaje}}</p>
 <i [routerLink]="['../backoffice-person-detail',0]" class="far fa-plus-square fa-3x"></i>
-<table style="width:100%">
-    <thead>
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
         <tr>
             <th>Nombre</th>
             <th>Correo</th>

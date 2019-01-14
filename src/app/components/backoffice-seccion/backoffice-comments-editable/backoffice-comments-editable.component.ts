@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Family } from 'src/app/model/family';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Person } from 'src/app/model/person';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-backoffice-comments-editable',
@@ -13,6 +14,7 @@ import { Person } from 'src/app/model/person';
   styleUrls: ['./backoffice-comments-editable.component.scss']
 })
 export class BackofficeCommentsEditableComponent implements OnInit {
+  id : number;
   familias: Family[];
   formulario : FormGroup;
   personas : Person[];
@@ -21,8 +23,12 @@ export class BackofficeCommentsEditableComponent implements OnInit {
   hayMensaje : boolean ;
   mensaje : string;
 
-  constructor(private familyService : FamilysService, private personService : PersonsService, private comentariosService : CommentsService) {
-
+  constructor(private familyService : FamilysService,
+              private personService : PersonsService,
+              private comentariosService : CommentsService,
+              private route: ActivatedRoute) {
+    
+    this.id = 0 ;
     this.familias = [];
     this.personas = [];
     this.comentario = new Comentario();
@@ -53,9 +59,27 @@ export class BackofficeCommentsEditableComponent implements OnInit {
     this.setData();
    }
 
-  ngOnInit() {
+   ngOnInit() {
+    console.log("BackofficePersonEditableComponent -ngOnInit")
+    this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+      // llamar provider para conseguir datos a traves del id
+      
+      this.obtenerPorId(this.id);
+});
   }
 
+  obtenerPorId(id:number){
+    if(id > 0){
+      this.comentariosService.getBySelfId(id).subscribe(data =>{
+        data.forEach(comentario => {
+          this.comentario = comentario;
+          this.setData();
+        });   
+      });
+    }
+    
+  }
   getAllFamilys(){
     console.log("BackofficeCommentsEditableComponent -- getAllFamilys")
     this.familyService.getAll().subscribe(res=>{
@@ -113,16 +137,35 @@ create(){
  * Si no tiene 0 es porque arrastra de la accion anterior este dato indicando edicion
  */
 edit() {
-  // console.log("*******EDITANDO********");
-  // console.log("controls %o", this.formulario.controls);
+  this.comentario.titulo = this.formulario.controls.titulo.value;
+    this.comentario.texto = this.formulario.controls.texto.value;
+    console.log(this.formulario.controls.personas.value);
+    //buscamos la familia
+    this.familyService.getById(this.formulario.controls.familia.value).subscribe(familiaObservable => {
 
-  // this.mergePersons();
-  // let family =this.setFamily();
-  // this.familyService.update(family).subscribe(data => {
-  //   console.debug(data);
-  //   this.mensaje = "Registro editado con exito";
-  //   this.hayMensaje = true;
-  //})
+      familiaObservable.forEach(familia => {
+        //seteo la familia en el comenterio
+        this.comentario.familia = [];
+        this.comentario.familia.push(familia);
+        //obtenemos la persona   
+        this.personService.getBySelfId(this.formulario.controls.personas.value).subscribe(personObervable => {
+
+          personObervable.forEach(persona => {
+            //seteo la persona en el comentario
+            //reseteo las personas para que 
+            this.comentario.persona = [];
+            this.comentario.persona.push(persona);
+            //con el objeto completo hacemos post
+            this.comentariosService.add(this.comentario).subscribe(data => {
+              this.mensaje = "Comentario editado correctamente";
+              this.hayMensaje = true;
+              this.getComments();
+              // this.getSelfComments();
+            });
+          });
+        });
+      });
+    })
 
 }
 
@@ -160,9 +203,12 @@ getComments(){
 setData(){
   console.log(this.comentario);
   if(this.comentario.selfId != 0 ){
+    console.log("************Seteando datos del comentario a editar**************");
     this.formulario.controls.titulo.setValue(this.comentario.titulo);
     this.formulario.controls.selfId.setValue(this.comentario.selfId);
     this.formulario.controls.texto.setValue(this.comentario.texto);
+    this.formulario.controls.personas.setValue(this.comentario.persona[0].selfId);
+    this.formulario.controls.familia.setValue(this.comentario.familia[0].selfId);
     //this.formulario.controls.personas.setValue(this.familia.personas);
     //this.cargarPersonas();
   }else{
