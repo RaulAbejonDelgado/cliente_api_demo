@@ -7,6 +7,12 @@
 
         <p id="profile-name" class="profile-name-card"></p>
         <form [formGroup]="formulario" class="form-signin" (ngSubmit)="login()">
+            <p>Con la carga de datos</p>
+            <ul>
+                <li>admin@gmail.com : admin (rol admin)</li>
+                <li>raul@gmail.com : admin (rol usuario)</li>
+            </ul>
+
             <p *ngIf="hayMensaje" class="alert alert-danger">{{mensaje}}</p>
             <span id="reauth-email" class="reauth-email"></span>
             <input type="email" id="correo" formControlName="correo" class="form-control" name="correo" placeholder="Direccion de correo"
@@ -14,14 +20,14 @@
             <input type="password" id="password" formControlName="password" name="password" class="form-control"
                 placeholder="contraseña" required>
             <div id="remember" class="checkbox">
-                <label>
+                <!-- <label>
                     <input type="checkbox" value="remember-me"> recuerdame
-                </label>
+                </label> -->
             </div>
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Identificate</button>
         </form><!-- /form -->
-        <a href="#" class="forgot-password">
+        <!-- <a href="#" class="forgot-password">
             Olvidastes la contraseña?
-        </a>
+        </a> -->
     </div><!-- /card-container -->
 </div><!-- /container -->

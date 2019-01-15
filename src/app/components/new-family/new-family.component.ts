@@ -1,17 +1,17 @@
-import { Family } from './../../../model/family';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray, Form } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { Family } from 'src/app/model/family';
+import { Person } from 'src/app/model/person';
 import { ActivatedRoute } from '@angular/router';
 import { PersonsService } from 'src/app/providers/persons.service';
 import { FamilysService } from 'src/app/providers/familys.service';
-import { Person } from 'src/app/model/person';
 
 @Component({
-  selector: 'app-backoffice-family-detail',
-  templateUrl: './backoffice-family-detail.component.html',
-  styleUrls: ['./backoffice-family-detail.component.scss']
+  selector: 'app-new-family',
+  templateUrl: './new-family.component.html',
+  styleUrls: ['./new-family.component.scss']
 })
-export class BackofficeFamilyDetailComponent implements OnInit {
+export class NewFamilyComponent implements OnInit {
 
   id: number;
   formulario: FormGroup;
@@ -52,29 +52,9 @@ export class BackofficeFamilyDetailComponent implements OnInit {
 
   
 }
-
   ngOnInit() {
-    console.log("BackofficePersonEditableComponent -ngOnInit")
-    this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
-      // llamar provider para conseguir datos a traves del id
-      
-      this.obtenerPorId(this.id);
-});
   }
 
-  obtenerPorId(id:number){
-    if(id > 0){
-      this.familyService.getById(id).subscribe(data =>{
-        data.forEach(familia => {
-          this.familia = familia;
-          this.setData();
-        });   
-      });
-    }
-    
-  }
-  
   crearPersonFormGroup(): FormGroup{
     let personGroup = new FormGroup({
                 persona: new FormControl('')
@@ -165,6 +145,7 @@ create(){
       console.debug(data);
       this.mensaje = "Registro creado con exito";
       this.hayMensaje = true;
+      
     })
   
 }
@@ -259,4 +240,5 @@ elimniarPersona(indice:number){
   console.log(this.familia);
 }
 }
+
 

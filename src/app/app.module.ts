@@ -34,6 +34,7 @@ import { BackofficeCommentComponent } from './components/backoffice-seccion/back
 import { BackofficePersonEditableComponent } from './components/backoffice-seccion/backoffice-person-editable/backoffice-person-editable.component';
 import { BackofficeFamilyDetailComponent } from './components/backoffice-seccion/backoffice-family-detail/backoffice-family-detail.component';
 import { BackofficeCommentsEditableComponent } from './components/backoffice-seccion/backoffice-comments-editable/backoffice-comments-editable.component';
+import { NewFamilyComponent } from './components/new-family/new-family.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { BackofficeCommentsEditableComponent } from './components/backoffice-sec
     BackofficeCommentComponent,
     BackofficePersonEditableComponent,
     BackofficeFamilyDetailComponent,
-    BackofficeCommentsEditableComponent
+    BackofficeCommentsEditableComponent,
+    NewFamilyComponent
     
   ],
   imports: [

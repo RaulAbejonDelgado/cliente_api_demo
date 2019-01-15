@@ -5,6 +5,7 @@
         <tr>
             <th>Titulo</th>
             <th>Autor</th>
+            <th>Familia</th>
             <th>Texto</th>
             <th>Fecha</th>
             <th>Acciones</th>
@@ -15,6 +16,7 @@
         <tr *ngFor="let comentario of comentarios">
             <td>{{comentario.titulo}}</td>
             <td>{{comentario.persona[0].nombre}}</td>
+            <td>{{comentario.familia[0].nombre}}</td>
             <td>{{comentario.texto}}</td>
             <td>{{comentario.fecha}}</td>
             <td>
@@ -30,6 +32,7 @@
         <tr>
                 <th>Titulo</th>
                 <th>Autor</th>
+                <th>Familia</th>
                 <th>Texto</th>
                 <th>Fecha</th>
                 <th>Acciones</th>

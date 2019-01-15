@@ -22,13 +22,13 @@ export class LoginComponent implements OnInit {
     this.mensaje= "";
     this.hayMensaje = false;
     this.formulario = new FormGroup({
-      correo: new FormControl('drohne@gmail.com',
+      correo: new FormControl('admin@gmail.com',
         [
           Validators.required,
           Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$'),
           Validators.maxLength(200)
         ]),
-      password: new FormControl('drohne',
+      password: new FormControl('admin',
         [
           Validators.required,
           Validators.minLength(6),
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
           if(res.nombre === "admin"){
             this.router.navigate(['backoffice']);
           }else{
-            this.router.navigate(['comentario-nuevo']);
+            this.router.navigate(['perfil']);
           }
        
         

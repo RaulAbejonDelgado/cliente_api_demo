@@ -6,6 +6,11 @@
       <div class="form-group">
         <label for="nombre"> Titulo:</label>
         <input type="text" formControlName="titulo" class="form-control" name="titulo" placeholder="titulo del comentario">
+        <small *ngIf="formulario.controls.titulo.errors?.required" class="text-danger">El campos es requerido</small>
+        <small *ngIf="formulario.controls.titulo.errors?.minlength" class="text-danger">El nombre debe tener mas de 6
+          caracteres</small>
+        <small *ngIf="formulario.controls.titulo.errors?.maxlength" class="text-danger">El nombre debe tener menos de
+          200 caracteres</small>
       </div>
     </div>
     <div class="form-row justify-content-md-center">
@@ -30,6 +35,11 @@
           <label for="texto">Comentario</label><br>
           <textarea name="texto" formControlName="texto" placeholder="Deja tu comentario" minlength="5" maxlength="500"
             cols="40"></textarea>
+            <small *ngIf="formulario.controls.texto.errors?.required" class="text-danger">El campos es requerido</small>
+            <small *ngIf="formulario.controls.texto.errors?.minlength" class="text-danger">El nombre debe tener mas de 1
+              caracteres</small>
+            <small *ngIf="formulario.controls.texto.errors?.maxlength" class="text-danger">El nombre debe tener menos de
+              200 caracteres</small>
         </div>
       </div>
 
@@ -52,7 +62,7 @@
     </ul>
     <h3>Comentarios propios </h3>
     <ul>
-        <li *ngFor="let c of comentariosPropios">{{c.titulo}}</li>
+        <li *ngFor="let c of comentariosPropios"><a [routerLink]="['../comentario-detalle', c.selfId ]">{{c.titulo}}</a></li>
     </ul>
 </div>
 </div>

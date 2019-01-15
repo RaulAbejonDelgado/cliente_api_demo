@@ -37,7 +37,7 @@ export class RegistroComponent implements OnInit {
       password: new FormControl('',
         [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(5),
           Validators.maxLength(50)
         ]),
       correo: new FormControl('',
@@ -46,7 +46,8 @@ export class RegistroComponent implements OnInit {
           Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$'),
           Validators.maxLength(200)
         ]),
-      familySelector: new FormControl()
+      familySelector: new FormControl(),
+      nuevaFamilia : new FormControl(),
 
     })
 

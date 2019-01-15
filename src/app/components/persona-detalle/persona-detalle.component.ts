@@ -20,7 +20,7 @@ export class PersonaDetalleComponent implements OnInit {
   constructor(private route: ActivatedRoute, private personService:PersonsService,private familyService:FamilysService) { }
 
   ngOnInit() {
-    console.trace("CardComponent -ngOnInit")
+    console.trace("PersonaDetalleComponent -ngOnInit")
     this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
       // llamar provider para conseguir datos a traves del id

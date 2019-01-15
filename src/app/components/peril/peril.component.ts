@@ -29,13 +29,13 @@ export class PerilComponent implements OnInit {
       nombre: new FormControl('',
         [
           Validators.required,
-          Validators.minLength(2),
+          Validators.minLength(4),
           Validators.maxLength(50)
         ]),
       password: new FormControl('',
         [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(5),
           Validators.maxLength(50)
         ]),
       correo: new FormControl('',
@@ -44,7 +44,8 @@ export class PerilComponent implements OnInit {
           Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$'),
           Validators.maxLength(200)
         ]),
-      familySelector: new FormControl()
+      familySelector: new FormControl(),
+      selfId : new FormControl(),
 
     })
     this.getUser();
@@ -79,6 +80,32 @@ export class PerilComponent implements OnInit {
     this.formulario.controls.nombre.setValue(this.persona.nombre);
     this.formulario.controls.correo.setValue(this.persona.correo);
     this.formulario.controls.password.setValue(this.persona.password);
+    this.formulario.controls.selfId.setValue(this.persona.selfId);
 
+  }
+
+  edit() {
+    console.log("*******EDITANDO********");
+    console.log("controls %o", this.formulario.controls);
+    let persona = this.setPerson();  
+  
+    this.personService.update(persona).subscribe(data => {
+      console.debug(data);
+      this.mensaje = "Registro editado con exito";
+      this.hayMensaje = true;
+    })
+  
+  }
+
+  setPerson():Person{
+
+    let persona = new Person();
+    
+    persona.nombre = this.formulario.controls.nombre.value;
+    persona.correo = this.formulario.controls.correo.value;
+    persona.familyId = parseInt(this.formulario.controls.familySelector.value);
+    persona.password = this.formulario.controls.password.value;
+    persona.selfId = this.formulario.controls.selfId.value;
+    return persona;
   }
 }

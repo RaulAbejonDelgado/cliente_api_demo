@@ -6,7 +6,7 @@
         <tr>
             <th>Persona</th>
             <th>Correo</th>
-            <th>Familia</th>
+            <!-- <th>Familia</th> -->
             <th>Acciones</th>
             
         </tr>
@@ -15,7 +15,7 @@
         <tr *ngFor="let persona of personas">
             <td>{{persona.nombre}}</td>
             <td>{{persona.correo}}</td>
-            <td>{{persona.familyId}}</td>
+            <!-- <td>{{persona.familyId}}</td> -->
             <td>
                 <i class="fas fa-trash-alt fa-3x text-danger" (click)="elimniar(persona.selfId)" ></i> 
                 <i [routerLink]="['../backoffice-person-detail',persona.selfId]"  class="fas fa-edit fa-3x"></i>
@@ -29,7 +29,7 @@
         <tr>
             <th>Nombre</th>
             <th>Correo</th>
-            <th>Familia</th>
+            <!-- <th>Familia</th> -->
             <th>Acciones</th>
         </tr>
     </tfoot>

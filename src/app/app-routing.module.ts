@@ -21,9 +21,11 @@ import { BackofficeCommentComponent } from './components/backoffice-seccion/back
 import { BackofficePersonEditableComponent } from './components/backoffice-seccion/backoffice-person-editable/backoffice-person-editable.component';
 import { BackofficeFamilyDetailComponent } from './components/backoffice-seccion/backoffice-family-detail/backoffice-family-detail.component';
 import { BackofficeCommentsEditableComponent } from './components/backoffice-seccion/backoffice-comments-editable/backoffice-comments-editable.component';
+import { NewFamilyComponent } from './components/new-family/new-family.component';
 
 const routes: Routes = [
 
+  { path: 'new-family', component: NewFamilyComponent, canActivate: [ComentariosGuard]  },
   { path: 'backoffice-comment-detail/:id', component: BackofficeCommentsEditableComponent, canActivate: [BackofficeGuard] },
   { path: 'backoffice-family-detail/:id', component: BackofficeFamilyDetailComponent, canActivate: [BackofficeGuard] },
   { path: 'backoffice-person-detail/:id', component: BackofficePersonEditableComponent, canActivate: [BackofficeGuard] },

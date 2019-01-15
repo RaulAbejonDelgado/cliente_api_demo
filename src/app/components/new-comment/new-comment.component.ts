@@ -38,7 +38,7 @@ export class NewCommentComponent implements OnInit {
       texto: new FormControl('',
         [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(1),
           Validators.maxLength(200)
         ]),
       titulo: new FormControl('', [

@@ -36,7 +36,7 @@ export class BackofficePersonEditableComponent implements OnInit {
       password: new FormControl('',
         [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(4),
           Validators.maxLength(50)
         ]),
       correo: new FormControl('',
