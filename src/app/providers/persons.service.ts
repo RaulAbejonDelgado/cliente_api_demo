@@ -17,7 +17,7 @@ export class PersonsService {
     this.isLogued = false;
     this.isAdmin = false;
     this.personaLogued = new Person();
-    this.endpoint ="http://localhost:8080/API/publicaciones/person";
+    this.endpoint ="http://localhost:8080/persons{?page,size,sort}";
   }
   /**
    * All records from object
