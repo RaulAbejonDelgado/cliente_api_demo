@@ -50,9 +50,9 @@ export class BackofficeCommentsEditableComponent implements OnInit {
           Validators.minLength(5),
           Validators.maxLength(50)
         ]),
-        personas: new FormControl(''),
-        selfId : new FormControl(''),
-        familia : new FormControl(''),
+        personas: new FormControl('',[Validators.required]),
+        selfId : new FormControl('',[Validators.required]),
+        familia : new FormControl('',[Validators.required]),
         
     })
 
@@ -74,6 +74,7 @@ export class BackofficeCommentsEditableComponent implements OnInit {
       this.comentariosService.getBySelfId(id).subscribe(data =>{
         data.forEach(comentario => {
           this.comentario = comentario;
+          console.log(this.comentario);
           this.setData();
         });   
       });
@@ -208,13 +209,10 @@ setData(){
     this.formulario.controls.selfId.setValue(this.comentario.selfId);
     this.formulario.controls.texto.setValue(this.comentario.texto);
     this.formulario.controls.personas.setValue(this.comentario.persona[0].selfId);
-    this.formulario.controls.familia.setValue(this.comentario.familia[0].selfId);
+    this.formulario.controls.familia.setValue(this.comentario.persona[0].familyId);
     //this.formulario.controls.personas.setValue(this.familia.personas);
     //this.cargarPersonas();
   }else{
-    this.hayMensaje = true;
-    this.mensaje = " No se encontro coincidencia, pruebe a editar un registro existente"+
-    " , o crear un registro nuevo";
     this.comentario = new Comentario();
     this.comentario.selfId = 0;
     this.formulario.controls.selfId.setValue(this.comentario.selfId);
