@@ -16,7 +16,7 @@ export class CommentsService {
 
     console.log("CommentsService -- constructor");
 
-    this.endpoint = "http://localhost:8080/comentarios{?page,size,sort}";
+    this.endpoint = "http://localhost:8080/API/publicaciones/comentarios";
 
   }
 

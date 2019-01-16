@@ -13,7 +13,7 @@ export class FamilysService {
   constructor(public http: HttpClient) {
 
     console.log("FamilysService -- constructor");
-    this.endpoint = "http://localhost:8080/familias{?page,size,sort}";
+    this.endpoint = "http://localhost:8080/API/publicaciones/familias";
 
   }
 

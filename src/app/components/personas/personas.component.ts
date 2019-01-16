@@ -27,7 +27,8 @@ export class PersonasComponent implements OnInit {
 
     console.log("PersonasComponent -- getAll");
     this.personasService.getAll().subscribe(data => {
-      data.forEach(element => {
+      console.log(data._embedded);
+      data._embedded.personas.forEach(element => {
         console.log(element);
         this.personas.push(element);
 
